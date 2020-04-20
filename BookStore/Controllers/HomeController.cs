@@ -33,15 +33,15 @@ namespace BookStore.Controllers
             List<Book> bookList = new List<Book>();
             bookList.Add(new Book()
             {
-                ID = "01",
+                Id = 1,
                 Title = "The Gathering Storm",
-                ISBN = "123-456"
+                Isbn = "123-456"
             });
             bookList.Add(new Book()
             {
-                ID = "02",
+                Id = 2,
                 Title = "The Lord of the Rings: The Fellowship of the Rings",
-                ISBN = "123-457"
+                Isbn = "123-457"
             });
 
             return View(bookList);

@@ -7,42 +7,28 @@ using System.Web.Mvc;
 
 namespace BookStore.Controllers
 {
-    public class ProductsController : Controller
+    public class UsersController : Controller
     {
-        // GET: Products
+        // GET: Users
         public ActionResult Index()
         {
-            ViewBag.Message = "Products Page";
-            List<Book> bookList = new List<Book>() {
-                new Book()
-                {
-                    Id = 1,
-                    Title = "The Gathering Storm",
-                    Isbn = "123-456"
-                },
-                new Book(){
-                    Id = 02,
-                    Title = "The Lord of the Rings: The Fellowship of the Rings",
-                    Isbn = "123-457" 
-                }
-            };
-
-            return View(bookList);
+            User user = new User() { Id = 1, FirstName = "Zobad", LastName = "Mahmood", Email="abc@cde.com" , UserName="zobadmahmood" };
+            return View("UserProfile",user);
         }
 
-        // GET: Products/Details/5
+        // GET: Users/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Products/Create
+        // GET: Users/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Users/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -58,21 +44,23 @@ namespace BookStore.Controllers
             }
         }
 
-        // GET: Products/Edit/5
+        // GET: Users/Edit/5
+       /* [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(id);
         }
-
-        // POST: Products/Edit/5
+        */
+        // POST: Users/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit( int id, string username,string firstname, string lastname)
         {
             try
             {
+                User user = new User() {Id=id,UserName=username, FirstName=firstname, LastName=lastname };
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return View(user);
             }
             catch
             {
@@ -80,19 +68,16 @@ namespace BookStore.Controllers
             }
         }
 
-        // GET: Products/Delete/5
+        // GET: Users/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Products/Delete/5
+        // POST: Users/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            var _id= Request["ID"];
-            var _title= Request["Title"];
-            var _isbn= Request["ISBN"];
             try
             {
                 // TODO: Add delete logic here
